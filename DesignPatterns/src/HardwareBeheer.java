@@ -17,7 +17,7 @@ public class HardwareBeheer {
 		for (Iterator<ServerHardware> it = Servers.iterator(); it.hasNext();)
 		{
 			ServerHardware server = it.next();
-			Status.add(server.getStatus());
+			Status.add(server.isOnline());
 		}
 		return Status;
 	}
@@ -30,7 +30,7 @@ public class HardwareBeheer {
 			ServerHardware server = it.next();
 			if(server.getID() == serverID)
 			{
-				Status = server.getStatus();
+				Status = server.isOnline();
 			}
 		}
 		return Status;
