@@ -1,4 +1,4 @@
-
-public class Server {
+public abstract class Server {
+int prijs = 200;
 
 }
