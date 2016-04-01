@@ -4,15 +4,16 @@ public class Administratie {
 	public static void main(String[] args) {
 	     
 		Model model = new Model();
+		HardwareBeheer HardwareModel = new HardwareBeheer();
         AdministratieView aView = new AdministratieView();
         VerhuurView vView = new VerhuurView();
-        Controller controller = new Controller(model, aView, vView);
+        Controller controller = new Controller(model, HardwareModel, aView, vView);
         
         aView.setVisible(true);
         vView.setVisible(true);
 	}
 	
-	/*
+	/* in nieuwe verhuur ofiets??
 	Klant klant1 = new Klant("test", "adres", "0000ab", "NL", "stad", "a@b.c", "iban");
 	ServerHardware HW1 = new ServerHardware(1, 4, 8, Locatie.Amsterdam);
 	public void testje()

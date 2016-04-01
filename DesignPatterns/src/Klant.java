@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.attribute.ResolutionSyntax;
+
 public class Klant implements Observer{
 
 	private String naam;
@@ -43,5 +45,4 @@ public class Klant implements Observer{
 		gegevens.add(rekeningnummer);
 		return gegevens;
 	}
-
 }
