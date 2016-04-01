@@ -1,56 +1,29 @@
-
 import java.awt.event.*;
+import java.util.HashMap;
+import java.util.List;
 
 public class Controller {
-    //... The Controller needs to interact with both the Model and View.
-    private Model m_model;
-    private VerhuurView  m_view;
+    private Model model;
+    private AdministratieView  Aview;
     
-    //========================================================== constructor
-    /** Constructor */
-    Controller(Model model, VerhuurView view) {
-        m_model = model;
-        m_view  = view;
-        
-        //... Add listeners to the view.
-        view.addMultiplyListener(new MultiplyListener());
-        view.addClearListener(new ClearListener());
+    Controller(Model model, AdministratieView view) {
+        this.model = model;
+        Aview  = view;
+        Aview.verhuurListener(new verhuurListener());
     }
     
-    
-    ////////////////////////////////////////// inner class MultiplyListener
-    /** When a mulitplication is requested.
-     *  1. Get the user input number from the View.
-     *  2. Call the model to mulitply by this number.
-     *  3. Get the result from the Model.
-     *  4. Tell the View to display the result.
-     * If there was an error, tell the View to display it.
-     */
-    class MultiplyListener implements ActionListener {
+    class verhuurListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String userInput = "";
-            try {
-                userInput = m_view.getUserInput();
-                
-                m_view.setNaam(userInput);
-                //m_model.multiplyBy(userInput);
-                //m_view.setTotal(m_model.getValue());
-                
-            } catch (NumberFormatException nfex) {
-                m_view.showError("Bad input: '" + userInput + "'");
+        	HashMap<Verhuur, Klant> verhuurlijst = new HashMap<Verhuur, Klant>();
+        	verhuurlijst.put(new Verhuur(), new Klant("naam", "adres", "postcode", "land", "stad", "email", "rekeningnummer"));
+            try 
+            {
+            	
+            	Aview.fillList(verhuurlijst);
+            } 
+            catch (Exception ex) 
+            {
             }
         }
-    }//end inner class MultiplyListener
-    
-    
-    //////////////////////////////////////////// inner class ClearListener
-    /**  1. Reset model.
-     *   2. Reset View.
-     */    
-    class ClearListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            m_model.reset();
-            m_view.reset();
-        }
-    }// end inner class ClearListener
+    }
 }
