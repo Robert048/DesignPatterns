@@ -1,75 +1,84 @@
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
-class VerhuurView extends JFrame {
-    //... Components
-    private JTextField m_userInputTf = new JTextField(5);
-    private JTextField naam = new JTextField(10);
-    private JTextField m_totalTf     = new JTextField(20);
-    private JButton    m_inputBtn = new JButton("Input");
-    private JButton    m_clearBtn    = new JButton("Clear");
-    
-    private Model m_model;
-    
-    //======================================================= constructor
-    /** Constructor */
-    VerhuurView(Model model) {
-        //... Set up the logic
-        m_model = model;
-        
-        
-        //... Initialize components
-        m_totalTf.setText(m_model.getValue());
-        m_totalTf.setEditable(false);
-        
-        //... Layout the components.      
-        JPanel content = new JPanel();
-        content.setLayout(new FlowLayout());
-        content.add(new JLabel("Input"));
-        content.add(m_userInputTf);
-        content.add(m_inputBtn);
-        content.add(new JLabel("Total"));
-        content.add(m_totalTf);
-        content.add(m_clearBtn);
-        content.add(naam);
-        
-        //... finalize layout
-        this.setContentPane(content);
-        this.pack();
-        
-        this.setTitle("Huur een server");
-        // The window closing event should probably be passed to the 
-        // Controller in a real program, but this is a short example.
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-    
-    void reset() {
-        
-    }
-    
-    String getUserInput() {
-        return m_userInputTf.getText();
-    }
-    
-    void setTotal(String newTotal) {
-        m_totalTf.setText(newTotal);
-    }
-    
-    void setNaam(String naam)
-    {
-    	this.naam.setText(naam);
-    }
-    
-    void showError(String errMessage) {
-        JOptionPane.showMessageDialog(this, errMessage);
-    }
-    
-    void addMultiplyListener(ActionListener mal) {
-        m_inputBtn.addActionListener(mal);
-    }
-    
-    void addClearListener(ActionListener cal) {
-        m_clearBtn.addActionListener(cal);
-    }
+public class VerhuurView extends JFrame{
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	public VerhuurView() {
+		getContentPane().setLayout(null);
+		
+		JLabel lblNaam = new JLabel("Naam");
+		lblNaam.setBounds(10, 14, 46, 14);
+		getContentPane().add(lblNaam);
+		
+		textField = new JTextField();
+		textField.setBounds(106, 11, 86, 20);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblAdres = new JLabel("Adres");
+		lblAdres.setBounds(10, 42, 46, 14);
+		getContentPane().add(lblAdres);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(106, 39, 86, 20);
+		getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblPostcode = new JLabel("Postcode");
+		lblPostcode.setBounds(10, 70, 46, 14);
+		getContentPane().add(lblPostcode);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(106, 67, 86, 20);
+		getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblLand = new JLabel("Land");
+		lblLand.setBounds(10, 98, 46, 14);
+		getContentPane().add(lblLand);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(106, 95, 86, 20);
+		getContentPane().add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblStad = new JLabel("Stad");
+		lblStad.setBounds(10, 126, 46, 14);
+		getContentPane().add(lblStad);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(106, 123, 86, 20);
+		getContentPane().add(textField_4);
+		textField_4.setColumns(10);
+		
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setBounds(10, 154, 46, 14);
+		getContentPane().add(lblEmail);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(106, 151, 86, 20);
+		getContentPane().add(textField_5);
+		textField_5.setColumns(10);
+		
+		JLabel lblRekeningNummer = new JLabel("Rekening nummer");
+		lblRekeningNummer.setBounds(10, 182, 86, 14);
+		getContentPane().add(lblRekeningNummer);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(106, 179, 86, 20);
+		getContentPane().add(textField_6);
+		textField_6.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Registreer");
+		btnNewButton.setBounds(10, 207, 182, 23);
+		getContentPane().add(btnNewButton);
+	}
 }
