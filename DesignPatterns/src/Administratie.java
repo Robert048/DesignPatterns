@@ -4,10 +4,12 @@ public class Administratie {
 	public static void main(String[] args) {
 	     
 		Model model = new Model();
-        AdministratieView view = new AdministratieView();
-        Controller controller = new Controller(model, view);
+        AdministratieView aView = new AdministratieView();
+        VerhuurView vView = new VerhuurView();
+        Controller controller = new Controller(model, aView, vView);
         
-        view.setVisible(true);
+        aView.setVisible(true);
+        vView.setVisible(true);
 	}
 	
 	/*

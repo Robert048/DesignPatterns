@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
@@ -13,7 +12,7 @@ public class AdministratieView extends JFrame{
 	private JButton btnKlantenlijst = new JButton("Klantenlijst");
 	private JList list = new JList();
 	
-	public AdministratieView() {
+	public  AdministratieView() {
 		getContentPane().setLayout(null);
 		
 		btnVerhuurlijst.setBounds(10, 11, 89, 23);
