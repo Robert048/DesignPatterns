@@ -5,6 +5,7 @@ import javax.print.attribute.ResolutionSyntax;
 
 public class Klant implements Observer{
 
+	private int klantId;
 	private String naam;
 	private String adres;
 	private String postcode;
@@ -44,5 +45,11 @@ public class Klant implements Observer{
 		gegevens.add(email);
 		gegevens.add(rekeningnummer);
 		return gegevens;
+	}
+
+	@Override
+	public String toString()
+	{
+		return naam;
 	}
 }

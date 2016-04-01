@@ -1,4 +1,4 @@
-public abstract class Server {
+public interface Server {
 int prijs = 200;
 
 }

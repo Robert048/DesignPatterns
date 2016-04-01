@@ -16,15 +16,18 @@ public abstract class ServerBuilder {
 
 //NIET GEBRUIKT
 
-public abstract class ServerBuilder {
+public class ServerBuilder {
 	
-	public Server setupServer(String type){
-		Server server;
-		server = createServer(type);
-		return server;
-	}
-	
-	protected abstract Server createServer(String type);
+	public static Server setupServer(String type){
+		if (type.equalsIgnoreCase("web"))
+			return new Web(6, 1);
+		if (type.equalsIgnoreCase("voip"))
+			return new VoIP(VoIPClients.MUMBLE, 3, "test");
+		if (type.equalsIgnoreCase("game"))
+			return new GameServer("gsg", HardwareKeuzes.SETUP1, "ag", 1);
+		
+		return null;
+			}
 }
 
 

@@ -1,4 +1,4 @@
-public class GameServer extends Server {
+public class GameServer implements Server {
 
 	String gameNaam;
 	HardwareKeuzes hardwareKeuze;
