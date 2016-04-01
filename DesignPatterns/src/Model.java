@@ -4,6 +4,7 @@ import java.util.List;
 public class Model 
 {
 	private List<Klant> klantenlijst = new ArrayList<Klant>();
+	List<Verhuur> verhuurlijst = new ArrayList<Verhuur>();
 	
     Model() {
         reset();

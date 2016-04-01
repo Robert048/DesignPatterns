@@ -1,4 +1,4 @@
-public class Web extends Server {
+public class Web implements Server {
 	int Webruimte;
 	int Subdomeinen;
 	

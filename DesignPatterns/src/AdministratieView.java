@@ -1,5 +1,6 @@
+import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.DefaultListModel;
@@ -12,7 +13,7 @@ public class AdministratieView extends JFrame{
 	private JButton btnKlantenlijst = new JButton("Klantenlijst");
 	private JList list = new JList();
 	
-	public  AdministratieView() {
+	public AdministratieView() {
 		getContentPane().setLayout(null);
 		
 		btnVerhuurlijst.setBounds(10, 11, 89, 23);
@@ -25,6 +26,7 @@ public class AdministratieView extends JFrame{
 		getContentPane().add(list);
 		
 		this.setTitle("Administratie overzicht");
+		this.setSize(500, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
@@ -38,10 +40,10 @@ public class AdministratieView extends JFrame{
 		btnVerhuurlijst.addActionListener(al);
 	}
 	
-	protected void fillList(HashMap<Verhuur, Klant> verhuurlijst)
+	protected void fillList(List<Verhuur> verhuurlijst)
 	{
 		DefaultListModel test = new DefaultListModel<>();
-		test.addElement(verhuurlijst);
+		test.addElement(verhuurlijst.toString());
 		list.setModel(test);
 	}
 }
