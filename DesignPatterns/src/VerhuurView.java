@@ -2,6 +2,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 
@@ -15,6 +17,13 @@ public class VerhuurView extends JFrame{
 	private JTextField txtRekening;
 	private JButton btnRegistreer;
 	private JTextPane txtMessage;
+	private JLabel lblServerTypeweb;
+	private JTextField txtType;
+	private JLabel lblHuurperiodeInDagen;
+	private JTextField txtPeriode;
+	private JLabel lblKlantNummer;
+	private JTextField txtNummer;
+	private JButton btnHuren;
 	public VerhuurView() {
 		getContentPane().setLayout(null);
 		
@@ -89,6 +98,37 @@ public class VerhuurView extends JFrame{
 		txtMessage.setBounds(10, 241, 182, 20);
 		getContentPane().add(txtMessage);
 		
+		lblServerTypeweb = new JLabel("Server type (Web, Game, VoIP)");
+		lblServerTypeweb.setBounds(249, 14, 161, 14);
+		getContentPane().add(lblServerTypeweb);
+		
+		txtType = new JTextField();
+		txtType.setBounds(247, 39, 86, 20);
+		getContentPane().add(txtType);
+		txtType.setColumns(10);
+		
+		lblHuurperiodeInDagen = new JLabel("Huurperiode in dagen");
+		lblHuurperiodeInDagen.setBounds(249, 70, 161, 14);
+		getContentPane().add(lblHuurperiodeInDagen);
+		
+		txtPeriode = new JTextField();
+		txtPeriode.setBounds(249, 95, 86, 20);
+		getContentPane().add(txtPeriode);
+		txtPeriode.setColumns(10);
+		
+		lblKlantNummer = new JLabel("Klant nummer");
+		lblKlantNummer.setBounds(249, 126, 84, 14);
+		getContentPane().add(lblKlantNummer);
+		
+		txtNummer = new JTextField();
+		txtNummer.setBounds(247, 151, 86, 20);
+		getContentPane().add(txtNummer);
+		txtNummer.setColumns(10);
+		
+		btnHuren = new JButton("Huren");
+		btnHuren.setBounds(244, 178, 166, 23);
+		getContentPane().add(btnHuren);
+		
 		this.setTitle("Server huren");
 		this.setSize(500, 310);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -108,5 +148,19 @@ public class VerhuurView extends JFrame{
 	protected void showMessage(String Message) 
 	{
 		txtMessage.setText(Message);
+	}
+	
+	protected void nieuweVerhuurListener(ActionListener al) 
+	{
+		btnHuren.addActionListener(al);
+	}
+	
+	int verhuurnr = 0;
+	protected Verhuur GetUserInput2()
+	{
+		Server server = ServerBuilder.setupServer(txtType.getText());
+		verhuurnr = verhuurnr + 1;
+		Verhuur verhuur = new Verhuur(server, verhuurnr, txtPeriode.getText(), txtNummer, new Date());
+		return verhuur;
 	}
 }
