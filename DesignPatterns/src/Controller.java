@@ -19,7 +19,6 @@ public class Controller {
         BView = view3;
         
         Aview.verhuurListener(new verhuurListener());
-        Aview.klantListener(new klantListener());
         Aview.hardwareListener(new hardwareListener());
         Vview.registreerListener(new registreerListener());
         Vview.nieuweVerhuurListener(new nieuweVerhuurListener());
@@ -27,44 +26,34 @@ public class Controller {
         BView.updateStatusListener(new updateStatusListener());
     }
     
-    class verhuurListener implements ActionListener 
+    class verhuurListener implements ActionListener
     {
-        public void actionPerformed(ActionEvent e) {
-        	List<Verhuur> verhuurlijst = model.verhuurlijst;
-            try 
-            {
-            	Aview.fillList(verhuurlijst);
-            } 
-            catch (Exception ex) 
-            {
-            }
-        }
+    	public void actionPerformed(ActionEvent e) {
+    		Vview.setVisible(true);
+    	}
     }
     
-    class klantListener implements ActionListener 
+    class hardwareListener implements ActionListener
     {
-        public void actionPerformed(ActionEvent e) {
-        	List<Klant> klantenlijst = model.getKlanten();
-            try 
-            {
-            	Aview.fillList(klantenlijst);
-            } 
-            catch (Exception ex) 
-            {
-            }
-        }
+    	public void actionPerformed(ActionEvent e) {
+    		BView.setVisible(true);
+    	}
     }
     
-    class hardwareListener implements ActionListener 
+    class registreerListener implements ActionListener
     {
-        public void actionPerformed(ActionEvent e) {
-        	List<ServerHardware> hardwareLijst = hModel.getHardware();
-            try 
+    	public void actionPerformed(ActionEvent e) {
+        	try 
             {
-            	Aview.fillList(hardwareLijst);
+            	Klant nieuweKlant = Vview.GetUserInput();
+            	model.addKlant(nieuweKlant);
+            	Vview.showMessage("Geregistreerd");
+            	List<Klant> klantenlijst = model.getKlanten();
+               	Aview.fillKlantenList(klantenlijst);
             } 
             catch (Exception ex) 
             {
+            	Vview.showMessage("Mislukt");
             }
         }
     }
@@ -77,6 +66,8 @@ public class Controller {
             	Verhuur nieuweVerhuur = Vview.GetUserInput2();
             	model.addVerhuur(nieuweVerhuur);
             	Vview.showMessage("Verhuur gedaan");
+            	List<Verhuur> verhuurlijst = model.getVerhuur();
+              	Aview.fillVerhuurList(verhuurlijst);
             } 
             catch (Exception ex) 
             {
@@ -85,21 +76,7 @@ public class Controller {
         }
     }
     
-    class registreerListener implements ActionListener
-    {
-    	public void actionPerformed(ActionEvent e) {
-        	try 
-            {
-            	Klant nieuweKlant = Vview.GetUserInput();
-            	model.addKlant(nieuweKlant);
-            	Vview.showMessage("Geregistreerd");
-            } 
-            catch (Exception ex) 
-            {
-            	Vview.showMessage("Mislukt");
-            }
-        }
-    }
+    
     
     class bRegistreerListener implements ActionListener
     {
@@ -109,6 +86,8 @@ public class Controller {
         		ServerHardware nieuweServer = BView.GetUserInput();
             	hModel.addServer(nieuweServer);
             	BView.showMessage("Geregistreerd");
+            	List<ServerHardware> hardwareLijst = hModel.getHardware();
+            	Aview.fillHardwareList(hardwareLijst);
             } 
             catch (Exception ex) 
             {
@@ -130,7 +109,10 @@ public class Controller {
         		}
         		else
         		{
+        			exists.setStatus(updatedServer.isOnline());
         			BView.showMessageStatus("Server status aangepast");
+        			List<ServerHardware> hardwareLijst = hModel.getHardware();
+                	Aview.fillHardwareList(hardwareLijst);
         		}
             } 
             catch (Exception ex) 

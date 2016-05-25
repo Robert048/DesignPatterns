@@ -5,7 +5,7 @@ import java.util.List;
 public class Model 
 {
 	private List<Klant> klantenlijst = new ArrayList<Klant>();
-	List<Verhuur> verhuurlijst = new ArrayList<Verhuur>();
+	private List<Verhuur> verhuurlijst = new ArrayList<Verhuur>();
 	
     Model() {
         reset();
@@ -28,6 +28,11 @@ public class Model
     protected List<Klant> getKlanten()
     {
     	return klantenlijst;
+    }
+    
+    protected List<Verhuur> getVerhuur()
+    {
+    	return verhuurlijst;
     }
     
 	public Klant getKlant(int klantID)

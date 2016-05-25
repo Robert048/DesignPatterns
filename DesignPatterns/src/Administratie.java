@@ -11,8 +11,6 @@ public class Administratie {
         Controller controller = new Controller(model, HardwareModel, aView, vView, bView);
         
         aView.setVisible(true);
-        vView.setVisible(true);
-        bView.setVisible(true);
 	}
 	
 	/* in nieuwe verhuur ofiets??
