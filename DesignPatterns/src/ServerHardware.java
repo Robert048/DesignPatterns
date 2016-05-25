@@ -23,15 +23,21 @@ public class ServerHardware implements Observable
 		return Online;
 	}
 	
-	public void setOnline()
+	public void setStatus(boolean status) 
 	{
-		Online = true;
+		Online = status;
 		notifyObserver();
 	}
 	
 	public int getID()
 	{
 		return ServerID;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "serverID: " + ServerID + " cores: " + Cores + " ram: " + Ram + " locatie: " + Locatie;
 	}
 	
 	@Override

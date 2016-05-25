@@ -20,6 +20,7 @@ public class Controller {
         
         Aview.verhuurListener(new verhuurListener());
         Aview.klantListener(new klantListener());
+        Aview.hardwareListener(new hardwareListener());
         Vview.registreerListener(new registreerListener());
         Vview.nieuweVerhuurListener(new nieuweVerhuurListener());
         BView.registreerListener(new bRegistreerListener());
@@ -32,7 +33,6 @@ public class Controller {
         	List<Verhuur> verhuurlijst = model.verhuurlijst;
             try 
             {
-            	
             	Aview.fillList(verhuurlijst);
             } 
             catch (Exception ex) 
@@ -47,8 +47,21 @@ public class Controller {
         	List<Klant> klantenlijst = model.getKlanten();
             try 
             {
-            	
-            	Aview.fillListKlant(klantenlijst);
+            	Aview.fillList(klantenlijst);
+            } 
+            catch (Exception ex) 
+            {
+            }
+        }
+    }
+    
+    class hardwareListener implements ActionListener 
+    {
+        public void actionPerformed(ActionEvent e) {
+        	List<ServerHardware> hardwareLijst = hModel.getHardware();
+            try 
+            {
+            	Aview.fillList(hardwareLijst);
             } 
             catch (Exception ex) 
             {
@@ -93,11 +106,13 @@ public class Controller {
     	public void actionPerformed(ActionEvent e) {
         	try 
             {
-            	
+        		ServerHardware nieuweServer = BView.GetUserInput();
+            	hModel.addServer(nieuweServer);
+            	BView.showMessage("Geregistreerd");
             } 
             catch (Exception ex) 
             {
-            	
+            	BView.showMessage("Mislukt");
             }
         }
     }
@@ -107,11 +122,20 @@ public class Controller {
     	public void actionPerformed(ActionEvent e) {
         	try 
             {
-            	
+        		ServerHardware updatedServer = BView.GetUserInputStatus();
+        		ServerHardware exists = hModel.getServer(updatedServer.getID());
+        		if(exists == null)
+        		{
+        			BView.showMessageStatus("Server bestaat niet");
+        		}
+        		else
+        		{
+        			BView.showMessageStatus("Server status aangepast");
+        		}
             } 
             catch (Exception ex) 
             {
-            	
+            	BView.showMessageStatus("mislukt");
             }
         }
     }

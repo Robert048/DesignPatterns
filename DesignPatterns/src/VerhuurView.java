@@ -133,7 +133,6 @@ public class VerhuurView extends JFrame{
 		
 		this.setTitle("Server huren");
 		this.setSize(500, 310);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	protected void registreerListener(ActionListener al)

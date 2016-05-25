@@ -33,7 +33,6 @@ public class Model
 	public Klant getKlant(int klantID)
 	{
 		Klant returnKlant = null;
-		boolean Status = false;
 		for (Iterator<Klant> it = klantenlijst.iterator(); it.hasNext();)
 		{
 			Klant klant = it.next();

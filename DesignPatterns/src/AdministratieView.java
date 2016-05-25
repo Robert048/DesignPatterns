@@ -11,19 +11,23 @@ public class AdministratieView extends JFrame{
 	private Model model;
 	private JButton btnVerhuurlijst = new JButton("Verhuurlijst");
 	private JButton btnKlantenlijst = new JButton("Klantenlijst");
+	private JButton btnServers = new JButton("Hardwarelijst");
 	private JList list = new JList();
 	
 	public AdministratieView() {
 		getContentPane().setLayout(null);
 		
-		btnVerhuurlijst.setBounds(10, 11, 89, 23);
+		btnVerhuurlijst.setBounds(10, 11, 103, 23);
 		getContentPane().add(btnVerhuurlijst);
 		
-		btnKlantenlijst.setBounds(10, 42, 89, 23);
+		btnKlantenlijst.setBounds(10, 42, 103, 23);
 		getContentPane().add(btnKlantenlijst);
 		
-		list.setBounds(109, 14, 315, 236);
+		list.setBounds(144, 14, 330, 236);
 		getContentPane().add(list);
+		
+		btnServers.setBounds(10, 76, 103, 23);
+		getContentPane().add(btnServers);
 		
 		this.setTitle("Administratie overzicht");
 		this.setSize(500, 500);
@@ -40,22 +44,20 @@ public class AdministratieView extends JFrame{
 		btnVerhuurlijst.addActionListener(al);
 	}
 	
-	protected void fillList(List<Verhuur> verhuurlijst)
-	{
-		DefaultListModel test = new DefaultListModel<>();
-		test.addElement(verhuurlijst.toString());
-		list.setModel(test);
-	}
-	
 	protected void klantListener(ActionListener al)
 	{
 		btnKlantenlijst.addActionListener(al);
 	}
 	
-	protected void fillListKlant(List<Klant> klantenlijst)
+	protected void hardwareListener(ActionListener al)
 	{
-		DefaultListModel test = new DefaultListModel<>();
-		test.addElement(klantenlijst.toString());
-		list.setModel(test);
+		btnServers.addActionListener(al);
+	}
+	
+	protected <E> void fillList(List<E> lijst)
+	{
+		DefaultListModel model = new DefaultListModel<>();
+		model.addElement(lijst.toString());
+		list.setModel(model);
 	}
 }
