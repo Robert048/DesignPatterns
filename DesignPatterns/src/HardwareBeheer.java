@@ -10,32 +10,6 @@ public class HardwareBeheer {
 		Servers.add(server);
 	}
 	
-	/*
-	public List<Boolean> getStatus()
-	{
-		List<Boolean> Status = new ArrayList<Boolean>();
-		for (Iterator<ServerHardware> it = Servers.iterator(); it.hasNext();)
-		{
-			ServerHardware server = it.next();
-			Status.add(server.isOnline());
-		}
-		return Status;
-	}
-	
-	public Boolean getStatus(int serverID)
-	{
-		boolean Status = false;
-		for (Iterator<ServerHardware> it = Servers.iterator(); it.hasNext();)
-		{
-			ServerHardware server = it.next();
-			if(server.getID() == serverID)
-			{
-				Status = server.isOnline();
-			}
-		}
-		return Status;
-	}*/
-	
 	protected List<ServerHardware> getHardware()
     {
     	return Servers;
@@ -53,5 +27,22 @@ public class HardwareBeheer {
 			}
 		}
 		return returnServer;
+	}
+	
+	public ServerHardware findServer(Verhuur verhuur)
+	{
+		Server server = verhuur.getServer();
+		int coresNeeded = 4;
+		int ramNeeded = 2;
+		ServerHardware foundServer = null;
+		for (ServerHardware serverHardware : Servers) {
+			if(serverHardware.getUsedCores() + coresNeeded <= serverHardware.getCores() && serverHardware.getusedRam() + ramNeeded <= serverHardware.getRam())
+			{
+				foundServer = serverHardware;
+				serverHardware.setUsedCores(coresNeeded);
+				serverHardware.setUsedRam(ramNeeded);
+			}
+		}
+		return foundServer;
 	}
 }

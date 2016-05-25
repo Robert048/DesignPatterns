@@ -1,7 +1,5 @@
 import java.awt.event.*;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 public class Controller {
@@ -63,11 +61,31 @@ public class Controller {
     	public void actionPerformed(ActionEvent e) {
         	try 
             {
-            	Verhuur nieuweVerhuur = Vview.GetUserInput2();
-            	model.addVerhuur(nieuweVerhuur);
-            	Vview.showMessage("Verhuur gedaan");
-            	List<Verhuur> verhuurlijst = model.getVerhuur();
-              	Aview.fillVerhuurList(verhuurlijst);
+            	Verhuur nieuweVerhuur = Vview.GetUserInputVerhuur();
+              	Klant huurder = null;
+        		for (Iterator<Klant> it = model.getKlanten().iterator(); it.hasNext();)
+        		{
+        			Klant klant = it.next();
+        			if(klant.getID() == nieuweVerhuur.getKlantID())
+        			{
+        				huurder = klant;
+        			}
+        		}
+        		ServerHardware serverHardware = hModel.findServer(nieuweVerhuur);
+        		if (serverHardware != null)
+        		{
+	        		serverHardware.addObserver(huurder);
+	        		model.addVerhuur(nieuweVerhuur);
+	            	Vview.showMessage("Verhuur gedaan");
+	            	List<Verhuur> verhuurlijst = model.getVerhuur();
+	              	Aview.fillVerhuurList(verhuurlijst);
+	              	List<ServerHardware> hardwareLijst = hModel.getHardware();
+	            	Aview.fillHardwareList(hardwareLijst);
+        		}
+        		else
+        		{
+        			Vview.showMessage("Er zijn helaas geen servers beschikbaar");
+        		}
             } 
             catch (Exception ex) 
             {

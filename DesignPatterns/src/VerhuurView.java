@@ -2,12 +2,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.util.Date;
-
 import javax.swing.JButton;
 import javax.swing.JTextPane;
-import javax.swing.text.html.HTMLEditorKit.Parser;
-import javax.xml.bind.ParseConversionEvent;
 
 public class VerhuurView extends JFrame{
 	private JTextField txtNaam;
@@ -157,14 +153,11 @@ public class VerhuurView extends JFrame{
 	}
 	
 	int verhuurnr = 0;
-	ServerHardware shw = new ServerHardware(1, 32, 64, Locatie.Amsterdam);
-	protected Verhuur GetUserInput2()
+	protected Verhuur GetUserInputVerhuur()
 	{
 		Server server = ServerBuilder.setupServer(txtType.getText(),ServerKlasseKeuze.BASIC);
 		verhuurnr = verhuurnr + 1;
 		Verhuur verhuur = new Verhuur(server, verhuurnr, Integer.parseInt(txtPeriode.getText()),Integer.parseInt(txtNummer.getText()));
-		Model model = new Model();
-		shw.addObserver(model.getKlant(Integer.parseInt(txtNummer.getText())));
 		return verhuur;
 	}
 }

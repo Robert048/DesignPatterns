@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.attribute.ResolutionSyntax;
-
 public class Klant implements Observer{
 
 	private int klantId;
