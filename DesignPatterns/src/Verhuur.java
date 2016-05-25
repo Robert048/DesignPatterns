@@ -6,15 +6,15 @@ private Server server;
 private int verhuurdId;
 private int Verhuurtijd;
 private int klantId;
-private Date StartDatum;
 
-public Verhuur(Server server, int verhuurId, int verhuurTijd, int klantId, Date startDatum)
+
+public Verhuur(Server server, int verhuurId, int verhuurTijd, int klantId)
 {
 	this.server = server;
 	this.verhuurdId = verhuurId;
 	this.Verhuurtijd = verhuurTijd;
 	this.klantId = klantId;
-	this.StartDatum = startDatum;
+
 }
 
 private Server getServer() {
@@ -27,7 +27,7 @@ private int getKosten(){
 
 public String toString()
 {
-	return "" + verhuurdId;
+	return "Verhuurd id: " + verhuurdId + " verhuurtijd: " + Verhuurtijd;
 }
 
 }

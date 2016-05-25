@@ -6,28 +6,45 @@ import java.util.List;
 
 public class Controller {
     private Model model;
+    private HardwareBeheer hModel;
     private AdministratieView  Aview;
     private VerhuurView Vview;
     
-    Controller(Model model, AdministratieView view, VerhuurView view2) {
+    Controller(Model model, HardwareBeheer hardwareBeheer, AdministratieView view, VerhuurView view2) {
         this.model = model;
+        this.hModel = hardwareBeheer;
         Aview  = view;
         Vview = view2;
         
         Aview.verhuurListener(new verhuurListener());
+        Aview.klantListener(new klantListener());
         Vview.registreerListener(new registreerListener());
+        Vview.nieuweVerhuurListener(new nieuweVerhuurListener());
     }
     
     class verhuurListener implements ActionListener 
     {
         public void actionPerformed(ActionEvent e) {
         	List<Verhuur> verhuurlijst = model.verhuurlijst;
-        	Server server = ServerBuilder.setupServer("web");
-        	verhuurlijst.add(new Verhuur(server,1,2,3,new Date(123)));
             try 
             {
             	
             	Aview.fillList(verhuurlijst);
+            } 
+            catch (Exception ex) 
+            {
+            }
+        }
+    }
+    
+    class klantListener implements ActionListener 
+    {
+        public void actionPerformed(ActionEvent e) {
+        	List<Klant> klantenlijst = model.getKlanten();
+            try 
+            {
+            	
+            	Aview.fillListKlant(klantenlijst);
             } 
             catch (Exception ex) 
             {
@@ -40,13 +57,13 @@ public class Controller {
     	public void actionPerformed(ActionEvent e) {
         	try 
             {
-            	Verhuur nieuweVerhuur = Aview.GetUserInput2();
-            	model.addKlant(nieuweKlant);
-            	Vview.showMessage("Geregistreerd");
+            	Verhuur nieuweVerhuur = Vview.GetUserInput2();
+            	model.addVerhuur(nieuweVerhuur);
+            	Vview.showMessage("Verhuur gedaan");
             } 
             catch (Exception ex) 
             {
-            	Vview.showMessage("Mislukt");
+            	Vview.showMessage("Verhuur gefaald");
             }
         }
     }

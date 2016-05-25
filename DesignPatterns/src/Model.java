@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Model 
@@ -19,8 +20,28 @@ public class Model
     	klantenlijst.add(klant);
     }
     
+    protected void addVerhuur(Verhuur verhuur)
+    {
+    	verhuurlijst.add(verhuur);
+    }
+    
     protected List<Klant> getKlanten()
     {
     	return klantenlijst;
     }
+    
+	public Klant getKlant(int klantID)
+	{
+		Klant returnKlant = null;
+		boolean Status = false;
+		for (Iterator<Klant> it = klantenlijst.iterator(); it.hasNext();)
+		{
+			Klant klant = it.next();
+			if(klant.getID() == klantID)
+			{
+				returnKlant = klant;
+			}
+		}
+		return returnKlant;
+	}
 }

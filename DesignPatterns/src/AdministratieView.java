@@ -46,4 +46,16 @@ public class AdministratieView extends JFrame{
 		test.addElement(verhuurlijst.toString());
 		list.setModel(test);
 	}
+	
+	protected void klantListener(ActionListener al)
+	{
+		btnKlantenlijst.addActionListener(al);
+	}
+	
+	protected void fillListKlant(List<Klant> klantenlijst)
+	{
+		DefaultListModel test = new DefaultListModel<>();
+		test.addElement(klantenlijst.toString());
+		list.setModel(test);
+	}
 }

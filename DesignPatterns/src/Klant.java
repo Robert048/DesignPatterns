@@ -46,10 +46,15 @@ public class Klant implements Observer{
 		gegevens.add(rekeningnummer);
 		return gegevens;
 	}
+	
+	public int getID()
+	{
+		return klantId;
+	}
 
 	@Override
 	public String toString()
 	{
-		return naam;
+		return "naam: " + naam + " adres: " + adres + " postcode: " + postcode + " land: " + land;
 	}
 }
