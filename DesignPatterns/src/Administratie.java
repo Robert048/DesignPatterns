@@ -8,7 +8,8 @@ public class Administratie {
         AdministratieView aView = new AdministratieView();
         VerhuurView vView = new VerhuurView();
         BeheerView bView = new BeheerView();
-        Controller controller = new Controller(model, HardwareModel, aView, vView, bView);
+        @SuppressWarnings("unused")
+		Controller controller = new Controller(model, HardwareModel, aView, vView, bView);
         
         aView.setVisible(true);
 	}

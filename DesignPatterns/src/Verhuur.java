@@ -1,5 +1,3 @@
-import java.sql.Date;
-
 public class Verhuur {
 	
 private Server server;

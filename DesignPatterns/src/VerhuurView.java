@@ -2,12 +2,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.util.Date;
-
 import javax.swing.JButton;
 import javax.swing.JTextPane;
-import javax.swing.text.html.HTMLEditorKit.Parser;
-import javax.xml.bind.ParseConversionEvent;
 
 public class VerhuurView extends JFrame{
 	private JTextField txtNaam;

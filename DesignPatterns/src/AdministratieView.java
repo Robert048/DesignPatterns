@@ -1,46 +1,56 @@
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.List;
-
 import javax.swing.JFrame;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JLabel;
 
 public class AdministratieView extends JFrame{
-	private Model model;
 	private JButton btnVerhuur = new JButton("Nieuwe verhuur/klant aanmaken");
-	private JList lstVerhuur = new JList();
-	private JList lstServers = new JList();
-	private JList lstKlanten = new JList();
-	private final JButton btnHardware = new JButton("Nieuwe hardware toevoegen");
+	private  JButton btnHardware = new JButton("Nieuwe hardware toevoegen");
+	private JList<Verhuur> lstVerhuur = new JList<Verhuur>();
+	private JList<ServerHardware> lstServers = new JList<ServerHardware>();
+	private JList<Klant> lstKlanten = new JList<Klant>();;
+	private JLabel lvlKlanten = new JLabel("Klantenlijst:");
+	private JLabel lblHardwareStatus = new JLabel("Hardware status:");
+	private JLabel lblVerhuur = new JLabel("Verhuurlijst:");
 	
 	public AdministratieView() {
 		getContentPane().setLayout(null);
 		
-		btnVerhuur.setBounds(10, 11, 207, 23);
+		btnVerhuur.setBounds(116, 11, 280, 23);
 		getContentPane().add(btnVerhuur);
 		
-		lstVerhuur.setBounds(406, 49, 368, 236);
+		lstVerhuur.setBounds(406, 64, 368, 236);
 		getContentPane().add(lstVerhuur);
 		
-		lstServers.setBounds(10, 49, 386, 236);
+		lstServers.setBounds(10, 64, 386, 236);
 		getContentPane().add(lstServers);
 		
-		lstKlanten.setBounds(10, 296, 764, 158);
+		lstKlanten.setBounds(10, 328, 764, 158);
 		getContentPane().add(lstKlanten);
-		btnHardware.setBounds(227, 11, 207, 23);
 		
+		btnHardware.setBounds(406, 11, 280, 23);
 		getContentPane().add(btnHardware);
 		
-		this.setTitle("Administratie overzicht");
-		this.setSize(800, 499);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-	
-	private void reset()
-	{
 		
+		lblHardwareStatus.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblHardwareStatus.setBounds(10, 45, 141, 18);
+		getContentPane().add(lblHardwareStatus);
+		
+		lblVerhuur.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblVerhuur.setBounds(406, 45, 141, 18);
+		getContentPane().add(lblVerhuur);
+		
+		lvlKlanten.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lvlKlanten.setBounds(10, 311, 141, 18);
+		getContentPane().add(lvlKlanten);
+		
+		this.setTitle("Administratie overzicht");
+		this.setSize(800, 525);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	protected void verhuurListener(ActionListener al)
@@ -55,7 +65,7 @@ public class AdministratieView extends JFrame{
 	
 	protected void fillHardwareList(List<ServerHardware> lijst)
 	{
-		DefaultListModel model = new DefaultListModel<>();
+		DefaultListModel model = new DefaultListModel();
 		for (ServerHardware serverHardware : lijst) {
 			model.addElement(serverHardware.toString() + " Status: " + serverHardware.isOnline());
 		}
