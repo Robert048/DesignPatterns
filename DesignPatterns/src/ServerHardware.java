@@ -5,6 +5,8 @@ public class ServerHardware implements Observable
 	private int ServerID;
 	private int Cores;
 	private int Ram;
+	private int usedCores;
+	private int usedRam;
 	private Locatie Locatie;
 	private boolean Online;
 	private ArrayList<Observer> klanten = new ArrayList<Observer>();
@@ -16,6 +18,8 @@ public class ServerHardware implements Observable
 		this.Ram = Ram;
 		this.Locatie = Locatie;
 		Online = true;
+		usedCores = 0;
+		usedRam = 0;
 	}
 	
 	public boolean isOnline()
@@ -34,10 +38,34 @@ public class ServerHardware implements Observable
 		return ServerID;
 	}
 	
+	public int getCores() {
+		return Cores;
+	}
+	
+	public int getRam() {
+		return Ram;
+	}
+	
+	public int getUsedCores() {
+		return usedCores;
+	}
+	
+	public int getusedRam() {
+		return usedRam;
+	}
+	
+	public void setUsedCores(int cores) {
+		usedCores = usedCores + cores;
+	}
+	
+	public void setUsedRam(int ram) {
+		usedRam = usedRam + ram;
+	}
+	
 	@Override
 	public String toString()
 	{
-		return "serverID: " + ServerID + " cores: " + Cores + " ram: " + Ram + " locatie: " + Locatie;
+		return "serverID: " + ServerID + " cores: " + usedCores + "/" + Cores + " ram: " + usedRam + "/" + Ram + " locatie: " + Locatie;
 	}
 	
 	@Override

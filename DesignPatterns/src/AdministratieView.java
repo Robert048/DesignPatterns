@@ -20,36 +20,36 @@ public class AdministratieView extends JFrame{
 	public AdministratieView() {
 		getContentPane().setLayout(null);
 		
-		btnVerhuur.setBounds(116, 11, 280, 23);
+		btnVerhuur.setBounds(10, 11, 280, 23);
 		getContentPane().add(btnVerhuur);
 		
-		lstVerhuur.setBounds(406, 64, 368, 236);
+		lstVerhuur.setBounds(418, 87, 355, 388);
 		getContentPane().add(lstVerhuur);
 		
-		lstServers.setBounds(10, 64, 386, 236);
+		lstServers.setBounds(10, 87, 406, 388);
 		getContentPane().add(lstServers);
 		
-		lstKlanten.setBounds(10, 328, 764, 158);
+		lstKlanten.setBounds(775, 87, 296, 388);
 		getContentPane().add(lstKlanten);
 		
-		btnHardware.setBounds(406, 11, 280, 23);
+		btnHardware.setBounds(10, 34, 280, 23);
 		getContentPane().add(btnHardware);
 		
 		
 		lblHardwareStatus.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblHardwareStatus.setBounds(10, 45, 141, 18);
+		lblHardwareStatus.setBounds(10, 68, 141, 18);
 		getContentPane().add(lblHardwareStatus);
 		
 		lblVerhuur.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblVerhuur.setBounds(406, 45, 141, 18);
+		lblVerhuur.setBounds(418, 68, 141, 18);
 		getContentPane().add(lblVerhuur);
 		
 		lvlKlanten.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lvlKlanten.setBounds(10, 311, 141, 18);
+		lvlKlanten.setBounds(775, 68, 141, 18);
 		getContentPane().add(lvlKlanten);
 		
 		this.setTitle("Administratie overzicht");
-		this.setSize(800, 525);
+		this.setSize(1097, 525);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
