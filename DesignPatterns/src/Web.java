@@ -2,8 +2,9 @@ public class Web extends Server {
 	WebruimteKeuzes Webruimte;
 	WebSubdomeinenKeuzes Subdomeinen;
 	
-	public Web(ServerKlasseKeuze klasseKeuze){
+	public Web(ServerKlasseKeuze klasseKeuze, int dagen){
 		this.klasseKeuze = klasseKeuze;
+		this.dagen = dagen;
 		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
 		{
 			this.Webruimte = WebruimteKeuzes.BUDGET;
@@ -27,15 +28,15 @@ public class Web extends Server {
 	void addPrice(){
 		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
 		{
-			prijs = 100;
+			prijs = 2 * dagen;
 		}
 		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
 		{
-			prijs = 200;
+			prijs = 4 * dagen;
 		}
 		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
 		{
-			prijs = 350;
+			prijs = 6 * dagen;
 		}
 	}
 	
