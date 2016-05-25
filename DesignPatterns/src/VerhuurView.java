@@ -155,7 +155,7 @@ public class VerhuurView extends JFrame{
 	int verhuurnr = 0;
 	protected Verhuur GetUserInputVerhuur()
 	{
-		Server server = ServerBuilder.setupServer(txtType.getText(),ServerKlasseKeuze.BASIC);
+		Server server = ServerBuilder.setupServer(txtType.getText(),ServerKlasseKeuze.BASIC, Integer.parseInt(txtPeriode.getText()));
 		verhuurnr = verhuurnr + 1;
 		Verhuur verhuur = new Verhuur(server, verhuurnr, Integer.parseInt(txtPeriode.getText()),Integer.parseInt(txtNummer.getText()));
 		return verhuur;
