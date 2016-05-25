@@ -1,6 +1,7 @@
 public abstract class Server {
 	
 ServerKlasseKeuze klasseKeuze;
+int dagen = 0;
 int vastePrijs = 50;
 int prijs;
 

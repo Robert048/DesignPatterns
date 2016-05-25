@@ -3,8 +3,9 @@ public class GameServer extends Server {
 	HardwareKeuzes hardwareKeuze;
 	GameSlotsKeuzes slots;
 	
-	public GameServer(ServerKlasseKeuze klasseKeuze){
+	public GameServer(ServerKlasseKeuze klasseKeuze, int dagen){
 		this.klasseKeuze = klasseKeuze;
+		this.dagen = dagen;
 		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
 		{
 			this.hardwareKeuze = HardwareKeuzes.BUDGET;
@@ -28,15 +29,15 @@ public class GameServer extends Server {
 	void addPrice(){
 		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
 		{
-			prijs = 125;
+			prijs = 6 * dagen;
 		}
 		if(klasseKeuze == ServerKlasseKeuze.BASIC)
 		{
-			prijs = 175;
+			prijs = 8 * dagen;
 		}
 		if(klasseKeuze == ServerKlasseKeuze.PREMIUM)
 		{
-			prijs = 225;
+			prijs = 10 * dagen;
 		}
 	}
 	
