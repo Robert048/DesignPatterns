@@ -1,12 +1,15 @@
 public abstract class Server {
-int vastePrijs = 200;
+	
+ServerKlasseKeuze klasseKeuze;
+int vastePrijs = 50;
 int prijs;
 
 abstract void addPrice();
+abstract ServerKeuzes getType();
 
-	public final void calculate()
+	public final int calculate()
 	{
-		
+		return vastePrijs + prijs;
 	}
 
 }
