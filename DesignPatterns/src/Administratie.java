@@ -7,10 +7,12 @@ public class Administratie {
 		HardwareBeheer HardwareModel = new HardwareBeheer();
         AdministratieView aView = new AdministratieView();
         VerhuurView vView = new VerhuurView();
-        Controller controller = new Controller(model, HardwareModel, aView, vView);
+        BeheerView bView = new BeheerView();
+        Controller controller = new Controller(model, HardwareModel, aView, vView, bView);
         
         aView.setVisible(true);
         vView.setVisible(true);
+        bView.setVisible(true);
 	}
 	
 	/* in nieuwe verhuur ofiets??
