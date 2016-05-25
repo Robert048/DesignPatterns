@@ -9,17 +9,21 @@ public class Controller {
     private HardwareBeheer hModel;
     private AdministratieView  Aview;
     private VerhuurView Vview;
+    private BeheerView BView;
     
-    Controller(Model model, HardwareBeheer hardwareBeheer, AdministratieView view, VerhuurView view2) {
+    Controller(Model model, HardwareBeheer hardwareBeheer, AdministratieView view, VerhuurView view2, BeheerView view3) {
         this.model = model;
         this.hModel = hardwareBeheer;
         Aview  = view;
         Vview = view2;
+        BView = view3;
         
         Aview.verhuurListener(new verhuurListener());
         Aview.klantListener(new klantListener());
         Vview.registreerListener(new registreerListener());
         Vview.nieuweVerhuurListener(new nieuweVerhuurListener());
+        BView.registreerListener(new bRegistreerListener());
+        BView.updateStatusListener(new updateStatusListener());
     }
     
     class verhuurListener implements ActionListener 
@@ -80,6 +84,34 @@ public class Controller {
             catch (Exception ex) 
             {
             	Vview.showMessage("Mislukt");
+            }
+        }
+    }
+    
+    class bRegistreerListener implements ActionListener
+    {
+    	public void actionPerformed(ActionEvent e) {
+        	try 
+            {
+            	
+            } 
+            catch (Exception ex) 
+            {
+            	
+            }
+        }
+    }
+    
+    class updateStatusListener implements ActionListener
+    {
+    	public void actionPerformed(ActionEvent e) {
+        	try 
+            {
+            	
+            } 
+            catch (Exception ex) 
+            {
+            	
             }
         }
     }
