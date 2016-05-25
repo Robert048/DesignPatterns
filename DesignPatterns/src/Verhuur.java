@@ -27,7 +27,7 @@ private int getKosten(){
 
 public String toString()
 {
-	return "Verhuurd id: " + verhuurdId + " verhuurtijd: " + Verhuurtijd;
+	return "server: " + server.toString() + "Verhuurd id: " + verhuurdId + " verhuurtijd: " + Verhuurtijd + "Klant nr: " + klantId;
 }
 
 }

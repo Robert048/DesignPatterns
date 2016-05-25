@@ -5,12 +5,12 @@ import java.util.List;
 public class HardwareBeheer {
 	private List<ServerHardware> Servers = new ArrayList<ServerHardware>();
 	
-	public void addServer(int ServerID, int Cores, int Ram, Locatie Locatie)
+	public void addServer(ServerHardware server)
 	{
-		ServerHardware server = new ServerHardware(ServerID, Cores, Ram, Locatie);
 		Servers.add(server);
 	}
 	
+	/*
 	public List<Boolean> getStatus()
 	{
 		List<Boolean> Status = new ArrayList<Boolean>();
@@ -34,5 +34,24 @@ public class HardwareBeheer {
 			}
 		}
 		return Status;
+	}*/
+	
+	protected List<ServerHardware> getHardware()
+    {
+    	return Servers;
+    }
+	
+	public ServerHardware getServer(int serverID)
+	{
+		ServerHardware returnServer = null;
+		for (Iterator<ServerHardware> it = Servers.iterator(); it.hasNext();)
+		{
+			ServerHardware server = it.next();
+			if(server.getID() == serverID)
+			{
+				returnServer = server;
+			}
+		}
+		return returnServer;
 	}
 }

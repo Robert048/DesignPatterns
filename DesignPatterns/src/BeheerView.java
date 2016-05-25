@@ -19,7 +19,7 @@ public class BeheerView extends JFrame
 	private JButton btnRegistreer;
 	private JButton btnUpdateStatus;
 	private JTextPane txtMessage;
-	private JTextPane txtMessage2;
+	private JTextPane txtMessageStatus;
 	private JLabel lblServerID;
 	private JLabel lblStatus;
 	private JCheckBox cbxOnline;
@@ -74,9 +74,9 @@ public class BeheerView extends JFrame
 		btnUpdateStatus.setBounds(233, 95, 182, 23);
 		getContentPane().add(btnUpdateStatus);
 		
-		txtMessage2 = new JTextPane();
-		txtMessage2.setBounds(233, 129, 182, 20);
-		getContentPane().add(txtMessage2);
+		txtMessageStatus = new JTextPane();
+		txtMessageStatus.setBounds(233, 129, 182, 20);
+		getContentPane().add(txtMessageStatus);
 		
 		List<Locatie> locaties = Arrays.asList(Locatie.values());
 		
@@ -94,7 +94,6 @@ public class BeheerView extends JFrame
 		
 		this.setTitle("Server aanmaken");
 		this.setSize(438, 201);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	protected void registreerListener(ActionListener al)
@@ -105,5 +104,32 @@ public class BeheerView extends JFrame
 	protected void updateStatusListener(ActionListener al)
 	{
 		btnUpdateStatus.addActionListener(al);
+	}
+	
+	int serverID = 0;
+	protected ServerHardware GetUserInput() 
+	{
+		serverID = serverID + 1;
+		ServerHardware server = new ServerHardware(serverID, Integer.parseInt(txtCores.getText()), Integer.parseInt(txtRam.getText()), (Locatie)boxLocatie.getSelectedItem());
+		return server;
+	}
+	
+	protected void showMessage(String Message) 
+	{
+		txtMessage.setText(Message);
+	}
+	
+	protected ServerHardware GetUserInputStatus() 
+	{
+		int id = Integer.parseInt(txtServerID.getText());
+		boolean isOnline = cbxOnline.isSelected();
+		ServerHardware server = new ServerHardware(id, 0, 0, null);
+		server.setStatus(isOnline);
+		return server;
+	}
+	
+	protected void showMessageStatus(String Message) 
+	{
+		txtMessageStatus.setText(Message);
 	}
 }

@@ -5,7 +5,7 @@ import java.util.List;
 public class Model 
 {
 	private List<Klant> klantenlijst = new ArrayList<Klant>();
-	List<Verhuur> verhuurlijst = new ArrayList<Verhuur>();
+	private List<Verhuur> verhuurlijst = new ArrayList<Verhuur>();
 	
     Model() {
         reset();
@@ -30,10 +30,14 @@ public class Model
     	return klantenlijst;
     }
     
+    protected List<Verhuur> getVerhuur()
+    {
+    	return verhuurlijst;
+    }
+    
 	public Klant getKlant(int klantID)
 	{
 		Klant returnKlant = null;
-		boolean Status = false;
 		for (Iterator<Klant> it = klantenlijst.iterator(); it.hasNext();)
 		{
 			Klant klant = it.next();
