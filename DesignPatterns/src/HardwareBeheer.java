@@ -35,9 +35,11 @@ public class HardwareBeheer {
 		int coresNeeded = 4;
 		int ramNeeded = 2;
 		ServerHardware foundServer = null;
+		boolean found = false;
 		for (ServerHardware serverHardware : Servers) {
-			if(serverHardware.getUsedCores() + coresNeeded <= serverHardware.getCores() && serverHardware.getusedRam() + ramNeeded <= serverHardware.getRam())
+			if(!found && serverHardware.getUsedCores() + coresNeeded <= serverHardware.getCores() && serverHardware.getusedRam() + ramNeeded <= serverHardware.getRam())
 			{
+				found = true;
 				foundServer = serverHardware;
 				serverHardware.setUsedCores(coresNeeded);
 				serverHardware.setUsedRam(ramNeeded);
