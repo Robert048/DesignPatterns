@@ -1,4 +1,4 @@
-public class GameServer implements Server {
+public class GameServer extends Server {
 
 	HardwareKeuzes hardwareKeuze;
 	GameSlotsKeuzes slots;

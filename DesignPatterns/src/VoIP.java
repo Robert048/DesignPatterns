@@ -1,4 +1,4 @@
-public class VoIP implements Server {
+public class VoIP extends Server {
 
 	VoIPSlotsKeuzes Slots;
 	
