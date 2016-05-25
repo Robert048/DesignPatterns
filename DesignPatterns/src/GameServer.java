@@ -1,14 +1,10 @@
 public class GameServer implements Server {
 
-	String gameNaam;
 	HardwareKeuzes hardwareKeuze;
-	String locatie;
-	int slots;
+	GameSlotsKeuzes slots;
 	
-	public GameServer(String GameNaam, HardwareKeuzes HardwareKeuze, String Locatie, int Slots){
-		this.gameNaam = GameNaam;
+	public GameServer(HardwareKeuzes HardwareKeuze, GameSlotsKeuzes Slots){
 		this.hardwareKeuze = HardwareKeuze;
-		this.locatie = Locatie;
 		this.slots = Slots;
 	}
 	

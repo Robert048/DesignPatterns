@@ -1,8 +1,8 @@
 public class Web implements Server {
-	int Webruimte;
-	int Subdomeinen;
+	WebruimteKeuzes Webruimte;
+	WebSubdomeinenKeuzes Subdomeinen;
 	
-	public Web(int Webruimte, int Subdomeinen){
+	public Web(WebruimteKeuzes Webruimte, WebSubdomeinenKeuzes Subdomeinen){
 		this.Webruimte = Webruimte;
 		this.Subdomeinen = Subdomeinen;
 	}

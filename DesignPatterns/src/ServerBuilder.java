@@ -18,13 +18,36 @@ public abstract class ServerBuilder {
 
 public class ServerBuilder {
 	
-	public static Server setupServer(String type){
+	public static Server setupServer(String type, ServerKlasseKeuze klasseKeuze){
 		if (type.equalsIgnoreCase("web"))
-			return new Web(6, 1);
+			if (klasseKeuze.equals(ServerKlasseKeuze.BUDGET))
+			return new Web(WebruimteKeuzes.BUDGET, WebSubdomeinenKeuzes.BUDGET);
+		
+			if (klasseKeuze.equals(ServerKlasseKeuze.BASIC))
+			return new Web(WebruimteKeuzes.BASIC, WebSubdomeinenKeuzes.BASIC);
+			
+			if (klasseKeuze.equals(ServerKlasseKeuze.PREMIUM))
+			return new Web(WebruimteKeuzes.PREMIUM, WebSubdomeinenKeuzes.PREMIUM);
+			
 		if (type.equalsIgnoreCase("voip"))
-			return new VoIP(VoIPClients.MUMBLE, 3, "test");
+			if (klasseKeuze.equals(ServerKlasseKeuze.BUDGET))
+			return new VoIP(VoIPSlotsKeuzes.BUDGET);
+		
+			if (klasseKeuze.equals(ServerKlasseKeuze.BASIC))
+			return new VoIP(VoIPSlotsKeuzes.BASIC);
+				
+			if (klasseKeuze.equals(ServerKlasseKeuze.PREMIUM))
+			return new VoIP(VoIPSlotsKeuzes.PREMIUM);
+
 		if (type.equalsIgnoreCase("game"))
-			return new GameServer("gsg", HardwareKeuzes.SETUP1, "ag", 1);
+			if (klasseKeuze.equals(ServerKlasseKeuze.BUDGET))
+			return new GameServer(HardwareKeuzes.BUDGET, GameSlotsKeuzes.BASIC);
+		
+			if (klasseKeuze.equals(ServerKlasseKeuze.BASIC))
+			return new GameServer(HardwareKeuzes.BASIC, GameSlotsKeuzes.BASIC);
+	
+			if (klasseKeuze.equals(ServerKlasseKeuze.PREMIUM))
+			return new GameServer(HardwareKeuzes.PREMIUM, GameSlotsKeuzes.PREMIUM);
 		
 		return null;
 			}
