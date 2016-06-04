@@ -30,11 +30,11 @@ public class Web extends Server {
 		{
 			prijs = 2 * dagen;
 		}
-		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
+		if(klasseKeuze == ServerKlasseKeuze.BASIC)
 		{
 			prijs = 4 * dagen;
 		}
-		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
+		if(klasseKeuze == ServerKlasseKeuze.PREMIUM)
 		{
 			prijs = 6 * dagen;
 		}
@@ -46,4 +46,22 @@ public class Web extends Server {
 		return ServerKeuzes.WEB;
 	}
 
+	@Override
+	void setNeeds() {
+		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
+		{
+			coresNeeded = 1;
+			ramNeeded = 2;
+		}
+		if(klasseKeuze == ServerKlasseKeuze.BASIC)
+		{
+			coresNeeded = 1;
+			ramNeeded = 4;
+		}
+		if(klasseKeuze == ServerKlasseKeuze.PREMIUM)
+		{
+			coresNeeded = 2;
+			ramNeeded = 6;
+		}
+	}
 }

@@ -38,9 +38,27 @@ public class VoIP extends Server {
 	}
 	
 	@Override
+	void setNeeds() {
+		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
+		{
+			coresNeeded = 2;
+			ramNeeded = 4;
+		}
+		if(klasseKeuze == ServerKlasseKeuze.BASIC)
+		{
+			coresNeeded = 2;
+			ramNeeded = 8;
+		}
+		if(klasseKeuze == ServerKlasseKeuze.PREMIUM)
+		{
+			coresNeeded = 4;
+			ramNeeded = 16;
+		}
+	}
+	
+	@Override
 	ServerKeuzes getType()
 	{
 		return ServerKeuzes.VOIP;
 	}
-
 }
