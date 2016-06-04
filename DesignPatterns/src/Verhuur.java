@@ -1,7 +1,7 @@
 public class Verhuur {
 	
 	private Server server;
-	private int verhuurdId;
+	private int verhuurId;
 	private int Verhuurtijd;
 	private int klantId;
 	
@@ -9,7 +9,7 @@ public class Verhuur {
 	public Verhuur(Server server, int verhuurId, int verhuurTijd, int klantId)
 	{
 		this.server = server;
-		this.verhuurdId = verhuurId;
+		this.verhuurId = verhuurId;
 		this.Verhuurtijd = verhuurTijd;
 		this.klantId = klantId;
 	
@@ -19,13 +19,14 @@ public class Verhuur {
 		return server;
 	}
 	
-	private int getKosten(){
-		return 0;
+	public int getKosten(){
+		server.addPrice();
+		return server.calculate();
 	}
 	
 	public String toString()
 	{
-		return "server: " + server.toString() + "Verhuurd id: " + verhuurdId + " verhuurtijd: " + Verhuurtijd + "Klant nr: " + klantId;
+		return "server: " + server.toString() + " Verhuur id: " + verhuurId + " verhuurtijd: " + Verhuurtijd + " Klant nr: " + klantId;
 	}
 	
 	public int getKlantID()

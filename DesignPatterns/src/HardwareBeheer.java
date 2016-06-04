@@ -32,17 +32,16 @@ public class HardwareBeheer {
 	public ServerHardware findServer(Verhuur verhuur)
 	{
 		Server server = verhuur.getServer();
-		int coresNeeded = 4;
-		int ramNeeded = 2;
+		server.setNeeds();
 		ServerHardware foundServer = null;
 		boolean found = false;
 		for (ServerHardware serverHardware : Servers) {
-			if(!found && serverHardware.getUsedCores() + coresNeeded <= serverHardware.getCores() && serverHardware.getusedRam() + ramNeeded <= serverHardware.getRam())
+			if(!found && serverHardware.getUsedCores() + server.getCoresNeeded() <= serverHardware.getCores() && serverHardware.getusedRam() + server.getRamNeeded() <= serverHardware.getRam())
 			{
 				found = true;
 				foundServer = serverHardware;
-				serverHardware.setUsedCores(coresNeeded);
-				serverHardware.setUsedRam(ramNeeded);
+				serverHardware.setUsedCores(server.getCoresNeeded());
+				serverHardware.setUsedRam(server.getRamNeeded());
 			}
 		}
 		return foundServer;

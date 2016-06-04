@@ -12,16 +12,5 @@ public class Administratie {
 		Controller controller = new Controller(model, HardwareModel, aView, vView, bView);
         
         aView.setVisible(true);
-	}
-	
-	/* in nieuwe verhuur ofiets??
-	Klant klant1 = new Klant("test", "adres", "0000ab", "NL", "stad", "a@b.c", "iban");
-	ServerHardware HW1 = new ServerHardware(1, 4, 8, Locatie.Amsterdam);
-	public void testje()
-	{
-		HW1.addObserver(klant1);
-		HW1.setOnline();
-		HW1.removeObserver(klant1);
-	}*/
-	
+	}	
 }

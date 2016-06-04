@@ -42,9 +42,27 @@ public class GameServer extends Server {
 	}
 	
 	@Override
+	void setNeeds() {
+		if(klasseKeuze == ServerKlasseKeuze.BUDGET)
+		{
+			coresNeeded = 4;
+			ramNeeded = 8;
+		}
+		if(klasseKeuze == ServerKlasseKeuze.BASIC)
+		{
+			coresNeeded = 8;
+			ramNeeded = 24;
+		}
+		if(klasseKeuze == ServerKlasseKeuze.PREMIUM)
+		{
+			coresNeeded = 16;
+			ramNeeded = 64;
+		}
+	}
+	
+	@Override
 	ServerKeuzes getType()
 	{
 		return ServerKeuzes.GAME;
 	}
-	
 }

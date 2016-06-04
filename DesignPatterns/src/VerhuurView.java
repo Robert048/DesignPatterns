@@ -2,8 +2,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+import javax.swing.JComboBox;
 
 public class VerhuurView extends JFrame{
 	private JTextField txtNaam;
@@ -16,12 +20,16 @@ public class VerhuurView extends JFrame{
 	private JButton btnRegistreer;
 	private JTextPane txtMessage;
 	private JLabel lblServerTypeweb;
-	private JTextField txtType;
 	private JLabel lblHuurperiodeInDagen;
 	private JTextField txtPeriode;
 	private JLabel lblKlantNummer;
 	private JTextField txtNummer;
 	private JButton btnHuren;
+	private JComboBox<ServerKlasseKeuze> boxServer;
+	private JComboBox<ServerKeuzes> boxTypes;
+	List<ServerKeuzes> types = Arrays.asList(ServerKeuzes.values());
+	List<ServerKlasseKeuze> keuzes = Arrays.asList(ServerKlasseKeuze.values());
+	
 	public VerhuurView() {
 		getContentPane().setLayout(null);
 		
@@ -93,42 +101,55 @@ public class VerhuurView extends JFrame{
 		getContentPane().add(btnRegistreer);
 		
 		txtMessage = new JTextPane();
-		txtMessage.setBounds(10, 241, 182, 20);
+		txtMessage.setBounds(10, 241, 489, 20);
 		getContentPane().add(txtMessage);
 		
-		lblServerTypeweb = new JLabel("Server type (Web, Game, VoIP)");
-		lblServerTypeweb.setBounds(249, 14, 161, 14);
+		lblServerTypeweb = new JLabel("Server type");
+		lblServerTypeweb.setBounds(249, 14, 72, 14);
 		getContentPane().add(lblServerTypeweb);
 		
-		txtType = new JTextField();
-		txtType.setBounds(247, 39, 86, 20);
-		getContentPane().add(txtType);
-		txtType.setColumns(10);
-		
 		lblHuurperiodeInDagen = new JLabel("Huurperiode in dagen");
-		lblHuurperiodeInDagen.setBounds(249, 70, 161, 14);
+		lblHuurperiodeInDagen.setBounds(249, 42, 114, 14);
 		getContentPane().add(lblHuurperiodeInDagen);
 		
 		txtPeriode = new JTextField();
-		txtPeriode.setBounds(249, 95, 86, 20);
+		txtPeriode.setBounds(373, 39, 126, 20);
 		getContentPane().add(txtPeriode);
 		txtPeriode.setColumns(10);
 		
 		lblKlantNummer = new JLabel("Klant nummer");
-		lblKlantNummer.setBounds(249, 126, 84, 14);
+		lblKlantNummer.setBounds(249, 98, 84, 14);
 		getContentPane().add(lblKlantNummer);
 		
 		txtNummer = new JTextField();
-		txtNummer.setBounds(247, 151, 86, 20);
+		txtNummer.setBounds(373, 95, 126, 20);
 		getContentPane().add(txtNummer);
 		txtNummer.setColumns(10);
 		
 		btnHuren = new JButton("Huren");
-		btnHuren.setBounds(244, 178, 166, 23);
+		btnHuren.setBounds(249, 122, 250, 23);
 		getContentPane().add(btnHuren);
 		
+		boxServer = new JComboBox<ServerKlasseKeuze>();
+		for (ServerKlasseKeuze ServerKlasseKeuze : keuzes) {
+			boxServer.addItem(ServerKlasseKeuze);
+		}
+		boxServer.setBounds(373, 67, 126, 20);
+		getContentPane().add(boxServer);
+		
+		boxTypes = new JComboBox<ServerKeuzes>();
+		for (ServerKeuzes type : types) {
+			boxTypes.addItem(type);
+		}
+		boxTypes.setBounds(373, 11, 126, 20);
+		getContentPane().add(boxTypes);
+		
+		JLabel lblServerKlasse = new JLabel("Server klasse");
+		lblServerKlasse.setBounds(249, 70, 72, 14);
+		getContentPane().add(lblServerKlasse);
+		
 		this.setTitle("Server huren");
-		this.setSize(500, 310);
+		this.setSize(567, 310);
 	}
 	
 	protected void registreerListener(ActionListener al)
@@ -136,9 +157,11 @@ public class VerhuurView extends JFrame{
 		btnRegistreer.addActionListener(al);
 	}
 	
+	int klantnr = 0;
 	protected Klant GetUserInput() 
 	{
-		Klant klant = new Klant(txtNaam.getText(), txtAdres.getText(), txtPostcode.getText(), txtLand.getText(), txtStad.getText(), txtEmail.getText(), txtRekening.getText());
+		klantnr = klantnr +1;
+		Klant klant = new Klant(klantnr, txtNaam.getText(), txtAdres.getText(), txtPostcode.getText(), txtLand.getText(), txtStad.getText(), txtEmail.getText(), txtRekening.getText());
 		return klant;
 	}
 	
@@ -155,7 +178,7 @@ public class VerhuurView extends JFrame{
 	int verhuurnr = 0;
 	protected Verhuur GetUserInputVerhuur()
 	{
-		Server server = ServerBuilder.setupServer(txtType.getText(),ServerKlasseKeuze.BASIC, Integer.parseInt(txtPeriode.getText()));
+		Server server = ServerBuilder.setupServer((ServerKeuzes)boxTypes.getSelectedItem(),(ServerKlasseKeuze)boxServer.getSelectedItem(), Integer.parseInt(txtPeriode.getText()));
 		verhuurnr = verhuurnr + 1;
 		Verhuur verhuur = new Verhuur(server, verhuurnr, Integer.parseInt(txtPeriode.getText()),Integer.parseInt(txtNummer.getText()));
 		return verhuur;

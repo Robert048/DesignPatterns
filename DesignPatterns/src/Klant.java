@@ -12,7 +12,8 @@ public class Klant implements Observer{
 	private String email;
 	private String rekeningnummer;
 	
-	public Klant(String naam, String adres, String postcode, String land, String stad, String email, String rekeningnummer){
+	public Klant(Integer klantId, String naam, String adres, String postcode, String land, String stad, String email, String rekeningnummer){
+		this.klantId = klantId;
 		this.naam = naam;
 		this.adres = adres;
 		this.postcode = postcode;
@@ -28,7 +29,7 @@ public class Klant implements Observer{
 		String status = "";
 		if(Online == true) status = "Online";
 		if(Online == false) status = "Offline";
-		System.out.println("Server status changed to: " + status);
+		System.out.println(klantId + ": Server status changed to: " + status);
 		
 	}
 	
@@ -53,6 +54,6 @@ public class Klant implements Observer{
 	@Override
 	public String toString()
 	{
-		return "naam: " + naam + " adres: " + adres + " postcode: " + postcode + " land: " + land;
+		return "klant nr: " + klantId + " naam: " + naam + " land: " + land;
 	}
 }

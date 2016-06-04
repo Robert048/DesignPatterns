@@ -76,11 +76,11 @@ public class Controller {
         		{
 	        		serverHardware.addObserver(huurder);
 	        		model.addVerhuur(nieuweVerhuur);
-	            	Vview.showMessage("Verhuur gedaan");
 	            	List<Verhuur> verhuurlijst = model.getVerhuur();
 	              	Aview.fillVerhuurList(verhuurlijst);
 	              	List<ServerHardware> hardwareLijst = hModel.getHardware();
 	            	Aview.fillHardwareList(hardwareLijst);
+	            	Vview.showMessage("Gelukt, kosten: " + nieuweVerhuur.getKosten());
         		}
         		else
         		{
